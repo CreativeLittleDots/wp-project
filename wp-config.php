@@ -95,7 +95,7 @@ $project = new WP_Project('project_name', array(
 	)
 ));
 
-/** Define these because we need to be able to set sub sites urls without touching datase*/
+/** Define these because we need to be able to set sub sites urls without touching database*/
 define('WP_2_HOME', WP_HOME . '/uk');
 define('WP_2_SITEURL', WP_2_HOME);
 

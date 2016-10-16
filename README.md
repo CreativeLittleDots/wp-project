@@ -135,7 +135,7 @@ Once you have run WP project you can reinstate DOMAIN_CURRENT_PATH constant.
 After this you can define sub sites accordingly if you wish;
 
 ```php
-/** Define these because we need to be able to set sub sites urls without touching datase*/
+/** Define these because we need to be able to set sub sites urls without touching database*/
 define('WP_2_HOME', WP_HOME . '/subfolder');
 define('WP_2_SITEURL', WP_2_HOME);
 ```
