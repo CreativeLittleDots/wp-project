@@ -15,7 +15,11 @@ You are able to define an array of environments in minimal code using a built in
 1. Download WP Project
 2. Place wp-project.php in the root of you Wordpress installation
 3. (If using WPMU) Place multisite-default-blog/ in your plugins folder
+4. (If using WPMU) Activate multisite-default-blog
 4. Merge wp-config.php in with your wp-config.php
+5. (If using WPMU) Temporarily remove instance of constant DOMAIN_CURRENT_PATH from wp-config
+6. Refresh website in browser to run WP Project
+7. (If using WPMU) Reinstate instance of DOMAIN_CURRENT_PATH constant in wp-config
 
 ## Manual Migration
 
@@ -112,6 +116,28 @@ $project = new WP_Project('test', array(
 		'password' => 'ethkzA$fghVB'
 	)
 ));
+```
+
+## WPMU
+
+WP Project supports WPMU through manipulating the WP_HOME and WP_SITEURL, but this only possible with the multisite-default-blog/ installed and activated, so you **must install and activate multisite-default-blog before do anything else**.
+
+Once the plugin is installed and activated you should continue with the installation of WP Project
+
+You must remove the instance of constant DOMAIN_CURRENT_PATH from wp-config and run WP Project to get things setup;
+
+```php
+define('DOMAIN_CURRENT_PATH', 'domain.com');  // only set this after wp-project has run and updated the network domain 
+```
+
+Once you have run WP project you can reinstate DOMAIN_CURRENT_PATH constant.
+
+After this you can define sub sites accordingly if you wish;
+
+```php
+/** Define these because we need to be able to set sub sites urls without touching datase*/
+define('WP_2_HOME', WP_HOME . '/subfolder');
+define('WP_2_SITEURL', WP_2_HOME);
 ```
 
 ## License
