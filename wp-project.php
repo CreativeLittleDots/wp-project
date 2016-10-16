@@ -79,7 +79,7 @@ class WP_Project {
 	 	foreach($this->environments as $key => &$environment) {
 		 	
 		 	$environment = array_merge(array(
-		 		'host' => '%1$s',
+		 		'host' => '%s.%s',
 			    'database' => '%2$s_%1$s',
 			    'username' => '%2$s_%1$s',
 			    'password' => ''
