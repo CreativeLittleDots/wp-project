@@ -1,12 +1,14 @@
 ## WP Project
 
-Keeping up with development and production environments is difficult, and when using Wordpress you often end up having to ensure you separate you wp-config files and make sure you do not overwrite them between each environment.
+Keeping up with development and production environments is difficult, and when using Wordpress you often end up having to ensure you separate your wp-config files and make sure you do not overwrite when uploading between each environment.
 
-At Creative Little Dots, we often develop locally on our machines, and then when were ready push to a staging environment for demonstration, and then the production once the changes are signed off, that is three different development areas.
+At Creative Little Dots, we often develop locally on our machines, and then push to a staging environment for demonstration, and finally push to production once the changes are signed off - that is three different development areas!
 
-It got us thinking, what if we could use just on wp-config file and pick up the current domain or ip address to route to the correct database credentials? It's surely possible right?
+It got us thinking, what if we could use just one wp-config file and pick up the current domain or ip address to route to the correct database credentials? It's surely possible right?
 
-Well of course, and WP Project just does that! You are able to define an array of environments in minimal code using a built in regular expression handler.
+Well of course it is, and WP Project just does that! 
+
+You are able to define an array of environments in minimal code using a built in regular expression handler.
 
 ## Installation
 
