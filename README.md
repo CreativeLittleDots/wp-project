@@ -1,4 +1,4 @@
-# [WP Project]
+## WP Project
 
 Keeping up with development and production environments is difficult, and when using Wordpress you often end up having to ensure you separate you wp-config files and make sure you do not overwrite them between each environment.
 
