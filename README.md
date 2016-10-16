@@ -122,7 +122,7 @@ $project = new WP_Project('test', array(
 
 WP Project supports WPMU through manipulating the WP_HOME and WP_SITEURL, but this only possible with the multisite-default-blog/ installed and activated, so you **must install and activate multisite-default-blog before do anything else**.
 
-Once the plugin is installed and activated you should continue with the installation of WP Project
+Once the plugin is installed and activated you should continue with the installation of WP Project.
 
 You must remove the instance of constant DOMAIN_CURRENT_PATH from wp-config and run WP Project to get things setup;
 
