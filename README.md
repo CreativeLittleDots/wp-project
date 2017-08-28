@@ -15,10 +15,10 @@ You are able to define an array of environments in minimal code using a built in
 Installation is more complicated due to how Wordpress allocated urls to sites within the network. We are hoping Wordpress will authorise a request we have made that will reduce the number of steps below for WPMU.
 
 1. Download WP Project
-2. Place wp-project.php in the root of you Wordpress installation
-3. Merge wp-config.php in with your wp-config.php
-4. (If using WPMU) Place multisite-default-blog/ in your mu-plugins folder
-5. (If using WPMU) Run wp-cli-update-wpmu-domain.php
+2. Place `wp-project.php` in the root of you Wordpress installation
+3. Merge `wp-config.php` in with your `wp-config.php`
+4. (If using WPMU) Place `multisite-default-blog/` folder in your mu-plugins folder
+5. (If using WPMU) Run `wp-cli-update-wpmu-domain.php` command
 
 ## Manual Migration
 
@@ -119,13 +119,9 @@ $project = new WP_Project('test', array(
 
 ## WPMU
 
-WP Project supports WPMU through manipulating the WP_HOME and WP_SITEURL. However a nuance with how Wordpress works is that you must remove the instance of constant DOMAIN_CURRENT_PATH from wp-config and run WP Project to get things setup;
+WP Project supports WPMU through manipulating the WP_HOME and WP_SITEURL. However a nuance with how Wordpress works is that you must remove update `wp_blogs` and `wp_sites` tables and change the domain to the domain you want for the environment. This is because there are not available filters to manipulate these. 
 
-```php
-define('DOMAIN_CURRENT_PATH', 'domain.com');  // only set this after wp-project has run and updated the network domain 
-```
-
-Once you have run WP project you can reinstate DOMAIN_CURRENT_PATH constant.
+To solve this problem, simply run the `wp-cli-update-wpmu-domain.php` command
 
 After this you can define sub sites accordingly if you wish;
 
