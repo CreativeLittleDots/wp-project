@@ -39,7 +39,7 @@ define('DB_PASSWORD', 'root');
 define('DB_HOST', 'localhost');
 ```
 
-Then copy the WP_Project instance into your wp-config as follows;
+Then copy the `wp-project.php` instance into your wp-config as follows;
 
 ```php
 /** Sets up WordPress project. */
@@ -119,7 +119,7 @@ $project = new WP_Project('test', array(
 
 ## WPMU
 
-WP Project supports WPMU through manipulating the WP_HOME and WP_SITEURL. However a nuance with how Wordpress works is that you must remove update `wp_blogs` and `wp_sites` tables and change the domain to the domain you want for the environment. This is because there are not available filters to manipulate these. 
+WP Project supports WPMU through manipulating the `WP_HOME` and `WP_SITEURL`. However a nuance with how Wordpress works is that you must remove update `wp_blogs` and `wp_sites` tables and change the domain to the domain you want for the environment. This is because there are not available filters to manipulate these. 
 
 To solve this problem, simply run the `wp-cli-update-wpmu-domain.php` command
 
