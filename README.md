@@ -16,12 +16,11 @@ Installation is more complicated due to how Wordpress allocated urls to sites wi
 
 1. Download WP Project
 2. Place wp-project.php in the root of you Wordpress installation
-3. (If using WPMU) Place multisite-default-blog/ in your plugins folder
-4. (If using WPMU) Activate multisite-default-blog
-5. Merge wp-config.php in with your wp-config.php
-6. (If using WPMU) Temporarily remove instance of constant DOMAIN_CURRENT_PATH from wp-config
-7. Refresh website in browser to run WP Project
-8. (If using WPMU) Reinstate instance of DOMAIN_CURRENT_PATH constant in wp-config
+3. (If using WPMU) Place multisite-default-blog/ in your mu-plugins folder
+4. Merge wp-config.php in with your wp-config.php
+5. (If using WPMU) Temporarily remove instance of constant DOMAIN_CURRENT_PATH from wp-config
+6. Refresh website in browser to run WP Project
+7. (If using WPMU) Reinstate instance of DOMAIN_CURRENT_PATH constant in wp-config
 
 ## Manual Migration
 
