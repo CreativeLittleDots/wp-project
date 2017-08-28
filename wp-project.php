@@ -8,7 +8,18 @@
  
 class WP_Project {
 	 
+	/**
+	     * The name of the project
+	     *
+	     * @var string
+	     */
 	public $project = 'project';
+	
+	/**
+	     * The environments of the project
+	     *
+	     * @var array
+	     */
 	public $environments = array(
 	    'local' => array(
 		    'database' => '%1$s.local',
@@ -21,6 +32,13 @@ class WP_Project {
 	    )
     );
  	
+	/**
+	     * The constructor
+	     *
+	     * @param string $project
+	     * @param array $environments
+	     * @return void
+		 */
  	public function __construct($project = 'project', $environments = array()) {
 	 	
 	 	if( defined('WP_DEBUG') && WP_DEBUG ) {
@@ -31,8 +49,8 @@ class WP_Project {
 		}
 		    
 		$this->project = $project;
-		$this->prepare_environments($environments);
-        $env = $this->get_environment();
+		$this->prepareEnvironments($environments);
+        $env = $this->getEnvironment();
         
         define('DB_NAME', $env->database);
         define('DB_USER', substr($env->username, 0, 16 ));
@@ -40,7 +58,7 @@ class WP_Project {
         
         if( ! defined('DOMAIN_CURRENT_PATH') ) {
             
-	        define('WP_HOME', $this->origin_url($env->host));	        
+	        define('WP_HOME', $this->originUrl($env->host));	        
 	        
 	        if( defined('MULTISITE') && MULTISITE && defined('SITE_ID_CURRENT_SITE') && SITE_ID_CURRENT_SITE ) {
 	        
@@ -48,13 +66,13 @@ class WP_Project {
 	            mysqli_select_db($link, DB_NAME) or die('Could not select database.');
 	            
 	            mysqli_query($link, "UPDATE " . $GLOBALS['table_prefix'] . "site SET domain = '" . $env->host . "' WHERE id = " . SITE_ID_CURRENT_SITE);
-	            mysqli_query($link, "UPDATE " . $GLOBALS['table_prefix'] . "blogs SET domain = '" . $env->host . "' WHERE site_id = " . SITE_ID_CURRENT_SITE);
+	            mysqli_query($link, "UPDATE " . $GLOBALS['table_prefix'] . "blogs SET domain = '" . $env->host . "' WHERE site_id = " . BLOG_ID_CURRENT_SITE);
 	            
 	        }  
 	        
 		} else {
 			
-			define('WP_HOME', $this->origin_url(DOMAIN_CURRENT_PATH));
+			define('WP_HOME', $this->originUrl(DOMAIN_CURRENT_PATH));
 			
 		}
 		
@@ -72,7 +90,13 @@ class WP_Project {
 	 	
  	}
  	
- 	public function prepare_environments($environments = array()) {
+	/**
+	     * Prepare environments array using regex etc.
+	     *
+	     * @param array $environments
+	     * @return void
+		 */
+ 	public function prepareEnvironments($environments = array()) {
 	 	
 	 	$this->environments = array_replace_recursive($this->environments, $environments);
 	 	
@@ -96,7 +120,13 @@ class WP_Project {
 	 	
  	}
 	
-	public function get_environment($env = null) {
+	/**
+	     * Get an environment info
+	     *
+	     * @param string $env
+	     * @return array
+		 */
+	public function getEnvironment($env = null) {
 		
 		if($env) {
 			return $this->environments[$env];	
@@ -110,7 +140,12 @@ class WP_Project {
 		
 	}
 	
-	public function origin_protocol() {
+	/**
+	     * Get origin protocol
+	     *
+	     * @return string
+		 */
+	public function originProtocol() {
 	    
 	    $ssl = ( ! empty( $_SERVER['HTTPS'] ) && $_SERVER['HTTPS'] == 'on' );
 	    
@@ -118,11 +153,16 @@ class WP_Project {
 	    
 	}
 	
-	public function origin_url($domain = null) {
+	/**
+	     * Get origin url
+	     *
+	     * @return string
+		 */
+	public function originUrl($domain = null) {
 		
 		$domain = $domain ? $domain : $this->origin_domain();
 	    
-	    return $this->origin_protocol() . '://' . $domain;
+	    return $this->originProtocol() . '://' . $domain;
 	    
 	}
 	 
