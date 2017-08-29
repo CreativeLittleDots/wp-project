@@ -17,8 +17,8 @@ Installation is more complicated due to how Wordpress allocated urls to sites wi
 1. Download WP Project
 2. Place `wp-project.php` in the root of you Wordpress installation
 3. Merge `wp-config.php` in with your `wp-config.php`
-4. (If using WPMU) Place `multisite-default-blog/` folder in your mu-plugins folder
-5. (If using WPMU) Run `wp-cli-update-wpmu-domain.php` command
+4. (If using WPMU) Place `multisite-default-blog.php` and `wp-cli-update-domain.php` in your mu-plugins folder
+5. (If using WPMU) Run `wp project update domain "domain.com"` command
 
 ## Manual Migration
 
@@ -121,7 +121,7 @@ $project = new WP_Project('test', array(
 
 WP Project supports WPMU through manipulating the `WP_HOME` and `WP_SITEURL`. However a nuance with how Wordpress works is that you must remove update `wp_blogs` and `wp_sites` tables and change the domain to the domain you want for the environment. This is because there are not available filters to manipulate these. 
 
-To solve this problem, simply run the `wp-cli-update-wpmu-domain.php` command
+To solve this problem, simply run the `wp project update domain "domain.com"` command
 
 After this you can define sub sites accordingly if you wish;
 
