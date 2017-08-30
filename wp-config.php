@@ -88,9 +88,7 @@ if ( !defined('ABSPATH') )
 /** Sets up WordPress project. */
 require_once(ABSPATH . 'wp-project.php');
 
-define('PROJECT_ENV', 'local');
-
-$project = new WP_Project('project_name', array(
+$GLOBALS['project'] = new WP_Project('project_name', array(
 	'local' => array(
 		'host' => 'test.local', // defaults to test.local
 		'database' => 'test', // defaults to test
