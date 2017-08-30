@@ -76,7 +76,7 @@ define('SUBDOMAIN_INSTALL', false);
 define('PATH_CURRENT_SITE', '/');
 define('SITE_ID_CURRENT_SITE', 1);
 define('BLOG_ID_CURRENT_SITE', 1);
-define('DOMAIN_CURRENT_PATH', 'domain.com');  // only set this after wp-project has run and updated the network domain 
+define('DOMAIN_CURRENT_SITE', 'domain.com');  // only set this after wp-project has run and updated the network domain 
 
 /* That's all, stop editing! Happy blogging. */
 
