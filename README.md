@@ -17,7 +17,7 @@ Installation is more complicated due to how Wordpress allocated urls to sites wi
 1. Download WP Project
 2. Place `wp-project.php` in the root of you Wordpress installation
 3. Merge `wp-config.php` in with your `wp-config.php`
-4. (If using WPMU) Place `multisite-default-blog.php` and `wp-cli-update-domain.php` in your mu-plugins folder
+4. (If using WPMU) Place `wpmu-home-contsants.php` and `wp-cli-update-domain.php` in your mu-plugins folder
 5. (If using WPMU) Run `wp project update domain` command
 
 ## Manual Migration
