@@ -88,10 +88,26 @@ if ( !defined('ABSPATH') )
 /** Sets up WordPress project. */
 require_once(ABSPATH . 'wp-project.php');
 
+define('PROJECT_ENV', 'local');
+
 $project = new WP_Project('project_name', array(
+	'local' => array(
+		'host' => 'test.local', // defaults to test.local
+		'database' => 'test', // defaults to test
+		'username' => 'root', // defaults to test
+		'password' => 'root'
+	),
 	'staging' => array(
-		'host' => '%s.staging.com',
-		'password' => '(r5iegethkzA$fghVB'
+		'host' => 'test.stagingserver.com', // defaults to test.staging
+		'database' => 'stagingserver_test', // defaults to staging_test
+		'username' => 'stagingserver_test', // defaults to staging_test
+		'password' => '(r5iegethkzA$fg'
+	),
+	'production' => array(
+		'host' => 'test-company.com', // defaults to test.com
+		'database' => 'testcomp_wp', // defaults to production_test
+		'username' => 'testcomp_wp', // defaults to production_test
+		'password' => 'ethkzA$fghVB'
 	)
 ));
 
