@@ -125,7 +125,7 @@ $project = new WP_Project('test', array(
 
 WP Project supports WPMU through manipulating the `WP_HOME` and `WP_SITEURL`. However a nuance with how Wordpress works is that you must remove update `wp_blogs` and `wp_sites` tables and change the domain to the domain you want for the environment. This is because there are not available filters to manipulate these. 
 
-To solve this problem, simply run the `wp project update domain` command
+To solve this problem, firstly [install WP CLI](http://wp-cli.org/), and then simply run the `wp project update domain` command.
 
 After this you can define sub sites accordingly if you wish;
 
