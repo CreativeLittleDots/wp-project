@@ -61,6 +61,8 @@ Lets say you have three environments;
 2. test.stagingserver.com (staging)
 3. test-company.com (production)
 
+And that your current environment is 'staging' - use the third argument.
+
 You should set up your WP Project as follows;
 
 ```php
@@ -86,7 +88,7 @@ $project = new WP_Project('test', array(
 		'username' => 'testcomp_wp', // defaults to production_test
 		'password' => 'ethkzA$fghVB'
 	)
-));
+), 'staging');
 ```
 ## Simplifying
 
@@ -114,7 +116,7 @@ $project = new WP_Project('test', array(
 		'username' => '%2%s_wp', // defaults to testcomp_test
 		'password' => 'ethkzA$fghVB'
 	)
-));
+), 'stagingserver');
 ```
 
 ## WPMU
