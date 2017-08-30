@@ -52,21 +52,18 @@ class WP_Project {
 		$this->prepareEnvironments($environments);
         $env = $this->getEnvironment();
         
-        define('DB_NAME', $env->database);
-        define('DB_USER', substr($env->username, 0, 16 ));
-        define('DB_PASSWORD', $env->password);
-		
-		define('WP_HOME', $this->originUrl( defined('DOMAIN_CURRENT_PATH') ? DOMAIN_CURRENT_PATH : $env->host ) );
-		define('WP_SITEURL', WP_HOME);
-		
-		! defined('WP_CONTENT_FOLDER') && define('WP_CONTENT_FOLDER', 'wp-content');
-		define('WP_CONTENT_URL', WP_SITEURL . DIRECTORY_SEPARATOR . WP_CONTENT_FOLDER);
-	    
-	    if( defined('WP_DEBUG') && WP_DEBUG ) {
-	
-		    error_reporting(NULL);
-		    ini_set('display_errors', false);
-		    
+        if( $env ) {
+        
+	        define('DB_NAME', $env->database);
+	        define('DB_USER', substr($env->username, 0, 16 ));
+	        define('DB_PASSWORD', $env->password);
+			
+			define('WP_HOME', $this->originUrl( defined('DOMAIN_CURRENT_PATH') ? DOMAIN_CURRENT_PATH : $env->host ) );
+			define('WP_SITEURL', WP_HOME);
+			
+			! defined('WP_CONTENT_FOLDER') && define('WP_CONTENT_FOLDER', 'wp-content');
+			define('WP_CONTENT_URL', WP_SITEURL . DIRECTORY_SEPARATOR . WP_CONTENT_FOLDER);
+			
 		}
 	 	
  	}
