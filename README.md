@@ -61,7 +61,9 @@ Lets say you have three environments;
 2. test.stagingserver.com (staging)
 3. test-company.com (production)
 
-And that your current environment is 'staging' - use the third argument.
+And that your current environment is `staging` as per the third argument of `WP_Project` constructor. 
+
+> **Note:** Unfortuantely we had to add this optional third argument for current environment for users running WPMU as when running any commands WP CLI has to know which environment to use.
 
 You should set up your WP Project as follows;
 
