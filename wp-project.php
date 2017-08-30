@@ -16,6 +16,13 @@ class WP_Project {
 	public $project = 'project';
 	
 	/**
+     * The current environment of the project (for cli)
+     *
+     * @var string
+     */
+	public $current = 'local';
+	
+	/**
      * The environments of the project
      *
      * @var array
@@ -39,7 +46,7 @@ class WP_Project {
      * @param array $environments
      * @return void
 	 */
- 	public function __construct($project = 'project', $environments = array()) {
+ 	public function __construct($project = 'project', $environments = array(), $current = 'local') {
 	 	
 	 	if( defined('WP_DEBUG') && WP_DEBUG ) {
     
@@ -49,6 +56,7 @@ class WP_Project {
 		}
 		    
 		$this->project = $project;
+		$this->current = $current;
 		$this->prepareEnvironments($environments);
         $env = $this->getEnvironment();
         
@@ -106,15 +114,27 @@ class WP_Project {
 	 */
 	public function getEnvironment($env = null) {
 		
-		if($env) {
+		if( $env ) {
+			
 			return $this->environments[$env];	
+			
 		}
 		
-		$environments = array_filter($this->environments, function($environment) {
-			return $environment->host === $_SERVER['HTTP_HOST'];
-		});
+		if( defined( 'WP_CLI' ) && WP_CLI ) {
+			
+			return ! empty( $this->environments[$this->current] ) ? $this->environments[$this->current] : null;;
+			
+		} else {
 		
-		return end($environments);
+			$environments = array_filter($this->environments, function($environment) {
+				
+				return $environment->host === $_SERVER['HTTP_HOST'];
+				
+			});
+			
+			return end($environments);
+			
+		}
 		
 	}
 	
